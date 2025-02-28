@@ -11,5 +11,11 @@ func main() {
 	flag.Parse()
 	exec := sdk.NewExec()
 
-	exec.BuildDashboard(dashboard.Builder{}, nil)
+	dash, err := dashboard.New(
+		"Node Resources",
+		dashboard.AddDatasource("Prometheus"),
+		dashboard.ProjectName("KubeConEurope2025"),
+	)
+
+	exec.BuildDashboard(dash, err)
 }
