@@ -4,7 +4,12 @@ import (
 	"flag"
 
 	"github.com/perses/perses/go-sdk"
+	"github.com/perses/perses/go-sdk/common"
 	"github.com/perses/perses/go-sdk/dashboard"
+	"github.com/perses/perses/go-sdk/panel"
+	panelgroup "github.com/perses/perses/go-sdk/panel-group"
+	timeSeriesPanel "github.com/perses/perses/go-sdk/panel/time-series"
+	"github.com/perses/perses/go-sdk/prometheus/query"
 )
 
 func main() {
@@ -15,6 +20,26 @@ func main() {
 		"Node Resources",
 		dashboard.AddDatasource("Prometheus"),
 		dashboard.ProjectName("KubeConEurope2025"),
+		dashboard.AddPanelGroup("CPU",
+			panelgroup.PanelsPerLine(1),
+			panelgroup.AddPanel("CPU Usage",
+				panel.AddQuery(query.PromQL("rate(node_cpu_seconds_total{mode=\"user\"}[5m])")),
+				timeSeriesPanel.Chart(
+					timeSeriesPanel.WithYAxis(
+						timeSeriesPanel.YAxis{
+							Format: &common.Format{
+								Unit: string(common.SecondsUnit),
+							},
+						},
+					),
+					timeSeriesPanel.WithLegend(timeSeriesPanel.Legend{
+						Position: timeSeriesPanel.BottomPosition,
+						Mode:     timeSeriesPanel.TableMode,
+						Values:   []common.Calculation{common.LastCalculation},
+					}),
+				),
+			),
+		),
 	)
 
 	exec.BuildDashboard(dash, err)
