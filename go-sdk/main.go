@@ -12,9 +12,33 @@ import (
 	timeSeriesPanel "github.com/perses/perses/go-sdk/panel/time-series"
 	promDs "github.com/perses/perses/go-sdk/prometheus/datasource"
 	"github.com/perses/perses/go-sdk/prometheus/query"
+	labelValuesVar "github.com/perses/perses/go-sdk/prometheus/variable/label-values"
+	listVar "github.com/perses/perses/go-sdk/variable/list-variable"
 )
 
+func AddInstanceVariable(enabled bool) dashboard.Option {
+	if !enabled {
+		return func(plugin *dashboard.Builder) error {
+			return nil
+		}
+	}
+	return dashboard.AddVariable("instance",
+		listVar.List(
+			labelValuesVar.PrometheusLabelValues("instance",
+				labelValuesVar.Matchers(
+					"node_uname_info{job='node', sysname!='Darwin'}",
+				),
+			),
+			listVar.DisplayName("instance"),
+			listVar.AllowAllValue(true),
+		),
+	)
+}
+
+var enableInstanceVariable bool
+
 func main() {
+	flag.BoolVar(&enableInstanceVariable, "enable-instance-variable", false, "enable instance variable")
 	flag.Parse()
 	exec := sdk.NewExec()
 
@@ -24,6 +48,7 @@ func main() {
 		dashboard.Name("Node / Resources"),
 		dashboard.AddDatasource("Prometheus", promDs.Prometheus(promDs.DirectURL("https://prometheus.demo.prometheus.io"))),
 		dashboard.ProjectName("KubeConEurope2025"),
+		AddInstanceVariable(enableInstanceVariable),
 		dashboard.AddPanelGroup("CPU",
 			panelgroup.PanelsPerLine(1),
 			panelgroup.AddPanel("CPU Usage",
