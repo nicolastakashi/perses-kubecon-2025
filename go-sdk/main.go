@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"time"
 
 	"github.com/perses/perses/go-sdk"
 	"github.com/perses/perses/go-sdk/common"
@@ -9,6 +10,7 @@ import (
 	"github.com/perses/perses/go-sdk/panel"
 	panelgroup "github.com/perses/perses/go-sdk/panel-group"
 	timeSeriesPanel "github.com/perses/perses/go-sdk/panel/time-series"
+	promDs "github.com/perses/perses/go-sdk/prometheus/datasource"
 	"github.com/perses/perses/go-sdk/prometheus/query"
 )
 
@@ -17,8 +19,10 @@ func main() {
 	exec := sdk.NewExec()
 
 	dash, err := dashboard.New(
-		"Node Resources",
-		dashboard.AddDatasource("Prometheus"),
+		"node_resources",
+		dashboard.Duration(time.Hour),
+		dashboard.Name("Node / Resources"),
+		dashboard.AddDatasource("Prometheus", promDs.Prometheus(promDs.DirectURL("https://prometheus.demo.prometheus.io"))),
 		dashboard.ProjectName("KubeConEurope2025"),
 		dashboard.AddPanelGroup("CPU",
 			panelgroup.PanelsPerLine(1),
