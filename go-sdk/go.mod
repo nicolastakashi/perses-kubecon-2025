@@ -1,4 +1,4 @@
-module github.com/nicolastakashi/perses-kubecon-2025
+module github.com/nicolastakashi/perses-kubecon-2025/go-sdk
 
 go 1.23.5
 
