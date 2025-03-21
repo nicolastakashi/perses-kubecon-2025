@@ -14,7 +14,7 @@ import (
 dashboardBuilder & {
 	#name: "node-exporter-simple"
 	#display: name: "Node Exporter Simple"
-	#project: "athebaud"
+	#project: "KubeConEurope2025"
 	#variables: node.variables
 	#panelGroups: panelGroupsBuilder & {
 		#input: [
