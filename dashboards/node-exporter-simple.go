@@ -43,9 +43,9 @@ func main() {
 	exec := sdk.NewExec()
 
 	dash, err := dashboard.New(
-		"node_resources",
+		"node_exporter_simple",
 		dashboard.Duration(time.Hour),
-		dashboard.Name("Node / Resources"),
+		dashboard.Name("Node Exporter Simple"),
 		dashboard.AddDatasource("Prometheus", promDs.Prometheus(promDs.DirectURL("https://prometheus.demo.prometheus.io"))),
 		dashboard.ProjectName("KubeConEurope2025"),
 		AddInstanceVariable(enableInstanceVariable),
