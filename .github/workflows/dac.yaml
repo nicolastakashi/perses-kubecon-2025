@@ -19,7 +19,6 @@ jobs:
       directory: ./dashboards
       server-validation: true
       cli_version: v0.51.0-beta.1
-      skip-preview: true
     secrets:
       username: ${{ secrets.DAC_USR }}
       password: ${{ secrets.DAC_PSW }}
