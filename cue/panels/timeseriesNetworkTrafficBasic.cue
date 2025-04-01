@@ -18,7 +18,6 @@ timeseriesNetworkTrafficBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     irate(node_network_receive_bytes_total{\(#filter)}[$__rate_interval]) * 8
                     """
@@ -28,7 +27,6 @@ timeseriesNetworkTrafficBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     irate(node_network_transmit_bytes_total{\(#filter)}[$__rate_interval]) * 8
                     """

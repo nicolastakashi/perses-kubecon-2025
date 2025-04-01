@@ -18,7 +18,6 @@ gaugeRAMUsed: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     (
                         (
@@ -37,7 +36,6 @@ gaugeRAMUsed: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     100 - (
                         (

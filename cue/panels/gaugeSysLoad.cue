@@ -17,7 +17,6 @@ gaugeSysLoad: panelBuilder & {
 		queries: [{
 			kind: "TimeSeriesQuery"
 			spec: plugin: promQuery & {spec: {
-				datasource: name: "argos-world"
 				query: """
                 avg_over_time(node_load5{\(#filter)}[$__rate_interval]) * 100
                 /

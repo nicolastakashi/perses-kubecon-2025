@@ -17,7 +17,6 @@ gaugeRootFS: panelBuilder & {
 		queries: [{
 			kind: "TimeSeriesQuery"
 			spec: plugin: promQuery & {spec: {
-				datasource: name: "argos-world"
 				query: """
                     100 - (
                         (

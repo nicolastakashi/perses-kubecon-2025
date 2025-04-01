@@ -18,7 +18,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by (instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode="system"}[$__rate_interval])
@@ -34,7 +33,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by(instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode="user"}[$__rate_interval])
@@ -49,7 +47,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by(instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode="iowait"}[$__rate_interval])
@@ -64,7 +61,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by(instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode=~".*irq"}[$__rate_interval])
@@ -79,7 +75,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by (instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode!='idle',mode!='user',mode!='system',mode!='iowait',mode!='irq',mode!='softirq'}[$__rate_interval])
@@ -94,7 +89,6 @@ timeseriesCPUBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     sum by(instance) (
                         irate(node_cpu_seconds_total{\(#filter), mode="idle"}[$__rate_interval])
