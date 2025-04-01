@@ -43,7 +43,7 @@ func main() {
 	exec := sdk.NewExec()
 
 	dash, err := dashboard.New(
-		"node_exporter_simple",
+		"node-exporter-simple-go",
 		dashboard.Duration(time.Hour),
 		dashboard.Name("Node Exporter Simple"),
 		dashboard.AddDatasource("Prometheus", promDs.Prometheus(promDs.DirectURL("https://prometheus.demo.prometheus.io"))),

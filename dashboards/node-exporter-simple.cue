@@ -12,7 +12,7 @@ import (
 #nodeFilter: {promFilterBuilder & node}.filter
 
 dashboardBuilder & {
-	#name: "node-exporter-simple"
+	#name: "node-exporter-simple-cue"
 	#display: name: "Node Exporter Simple"
 	#project: "KubeConEurope2025"
 	#variables: node.variables
