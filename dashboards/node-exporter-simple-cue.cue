@@ -13,7 +13,7 @@ import (
 
 dashboardBuilder & {
 	#name: "node-exporter-simple-cue"
-	#display: name: "Node Exporter Simple"
+	#display: name: "Node Exporter Simple (CUE-based)"
 	#project: "KubeConEurope2025"
 	#variables: node.variables
 	#panelGroups: panelGroupsBuilder & {
