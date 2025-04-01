@@ -18,7 +18,6 @@ timeseriesMemoryBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     node_memory_MemTotal_bytes{\(#filter)}
                     """
@@ -28,7 +27,6 @@ timeseriesMemoryBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     node_memory_MemTotal_bytes{\(#filter)}
                     - node_memory_MemFree_bytes{\(#filter)}
@@ -44,7 +42,6 @@ timeseriesMemoryBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     node_memory_Cached_bytes{\(#filter)}
                     + node_memory_Buffers_bytes{\(#filter)}
@@ -56,7 +53,6 @@ timeseriesMemoryBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     node_memory_MemFree_bytes{\(#filter)}
                     """
@@ -66,7 +62,6 @@ timeseriesMemoryBasic: panelBuilder & {
 			{
 				kind: "TimeSeriesQuery"
 				spec: plugin: promQuery & {spec: {
-					datasource: name: "argos-world"
 					query: """
                     node_memory_SwapTotal_bytes{\(#filter)} - node_memory_SwapFree_bytes{\(#filter)}
                     """

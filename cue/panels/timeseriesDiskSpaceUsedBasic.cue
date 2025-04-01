@@ -17,7 +17,6 @@ timeseriesDiskSpaceUsedBasic: panelBuilder & {
 		queries: [{
 			kind: "TimeSeriesQuery"
 			spec: plugin: promQuery & {spec: {
-				datasource: name: "argos-world"
 				query: """
                 100 - (
                     (node_filesystem_avail_bytes{\(#filter),device!~'rootfs'} * 100)

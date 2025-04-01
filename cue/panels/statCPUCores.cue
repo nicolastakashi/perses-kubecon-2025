@@ -17,7 +17,6 @@ statCPUCores: panelBuilder & {
 		queries: [{
 			kind: "TimeSeriesQuery"
 			spec: plugin: promQuery & {spec: {
-				datasource: name: "argos-world"
 				query: """
                 count(count(node_cpu_seconds_total{\(#filter)}) by (cpu))
                 """

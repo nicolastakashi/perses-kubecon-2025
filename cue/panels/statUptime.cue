@@ -17,7 +17,6 @@ statUptime: panelBuilder & {
 		queries: [{
 			kind: "TimeSeriesQuery"
 			spec: plugin: promQuery & {spec: {
-				datasource: name: "argos-world"
 				query: """
                 node_time_seconds{\(#filter)}
                 -
