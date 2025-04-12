@@ -13,7 +13,7 @@ on:
   merge_group:
 jobs:
   dac:
-    uses: perses/cli-actions/.github/workflows/dac.yaml@v0.2.0-beta.0
+    uses: perses/cli-actions/.github/workflows/dac.yaml@v0.1.0
     with:
       url: https://demo.perses.dev
       directory: ./dashboards
@@ -22,4 +22,3 @@ jobs:
     secrets:
       username: ${{ secrets.DAC_USR }}
       password: ${{ secrets.DAC_PSW }}
-      cue-token: ${{ secrets.CUE_TOKEN }}
